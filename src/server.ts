@@ -8,19 +8,22 @@ export function createServer(pageService: PageService, port?: number) {
       "/api/pages": {
         // Create page
         POST: async (req) => {
-          try {
-            const input = CreatePageSchema.parse(await req.json());
-            const page = pageService.create(input);
-            return Response.json(page, { status: 201 });
-          } catch (error) {
+          const parseResult = CreatePageSchema.safeParse(await req.json());
+
+          if (!parseResult.success) {
             return Response.json({ error: "Invalid input" }, { status: 400 });
           }
+
+          const page = pageService.create(parseResult.data);
+          return Response.json(page, { status: 201 });
         },
       },
       // Get page by ID
       "/api/pages/:id": (req) => {
         const page = pageService.getOneOrNull({ id: req.params.id });
+
         if (!page) return new Response("Not Found", { status: 404 });
+
         return Response.json(page);
       },
     },
