@@ -2,32 +2,48 @@
 
 ## Overview
 
-Makeswift is a visual page builder that allows users to create and edit websites without writing code. Makeswift keeps track of changes made to the page. All pages start in a draft version; users can publish them to make them available on the live site. Makeswift also allows users to roll back to previous versions of a page.
+Makeswift is a visual page builder that allows users to create and edit websites without writing code. Makeswift tracks changes made to pages. All pages start as draft versions; users can publish them to make them live. Makeswift also allows users to roll back to previous page versions.
 
 To get a sense of what Makeswift is, please check out [Makeswift](https://makeswift.com/).
+
+## Getting Started
+
+1. Clone the repository (do not fork):
+
+   ```bash
+   git clone <repository-url>
+   cd versioning-assignment
+   ```
+
+2. Prerequisites:
+
+   - Bun version `>=1.2.17 <2.0.0`
+
+3. Install dependencies:
+
+   ```bash
+   bun install
+   ```
+
+4. Start the tests:
+   ```bash
+   bun test:watch
+   ```
 
 ## Assignment
 
 In this assignment, you will build a simplified versioning system for a CMS.
 
-**API Endpoints** - Implement these REST endpoints:
+Implement/update these endpoints:
 
-1. `GET /v1/pages/:id?version=` - Retrieve a page, optionally by version
-2. `POST /v1/pages` - Create a new page
-3. `PATCH /v1/pages/:id` - Update an existing page
-4. `GET /v1/pages/publishable` - List pages in draft that can be published
-5. `POST /v1/publish?pageIds=<pageIds>` - Publish pages from draft to live
-6. `GET /v1/versions` - Retrieve version history
+1. `GET /v1/pages/:id?version=` - Add an optional `version` query parameter to retrieve a specific version of a page. If no version is specified, return the latest live version.
+2. `GET /v1/pages/publishable` - List draft pages that can be published `Array<{ from: Page; to: Page }>`
+3. `POST /v1/publish?pageIds=<pageIds>` - Publish pages from draft to live
+4. `GET /v1/versions` - Retrieve version history
 
-- Pages should have:
-  - `content`: The page content (string)
-  - `path`: URL path (string)
-- Technical Stack:
-  - Node.js with TypeScript
-  - Any frameworks/libraries you prefer
-  - Include test coverage
-- Your versioning system should be **extensible** - consider how it would scale when we add new resource types (components, themes, snippets, etc.).
-- Update the `NOTES.md` file with any notes, design decisions, and trade-offs you made during the implementation. If you haven't finished the assignment, please explain what you would have done with more time.
+- Your versioning system should be **extensible** - consider how it would scale when we add new resource types (components, typographies, snippets, etc.).
+- Add e2e tests for the new functionality.
+- Update the `NOTES.md` file with any notes, design decisions, testing plan, or trade-offs you made during the implementation. If you haven't finished the assignment, please explain what you would have done with more time.
 
 ## Timeframe and Evaluation Criteria
 
