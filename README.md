@@ -2,7 +2,7 @@
 
 ## Overview
 
-Makeswift is a visual page builder that allows users to create and edit websites without writing code. Makeswift tracks changes made to pages. All pages start as draft versions; users can publish them to make them live. Makeswift also allows users to roll back to previous page versions.
+Makeswift is a visual page builder that allows users to create and edit websites without writing code. Makeswift automatically tracks every change you make to a page. All pages start as draft versions; users can publish them to make them live. Makeswift also allows users to roll back to previous page versions.
 
 To get a sense of what Makeswift is, please check out [Makeswift](https://makeswift.com/).
 
@@ -17,7 +17,7 @@ To get a sense of what Makeswift is, please check out [Makeswift](https://makesw
 
 2. Prerequisites:
 
-   - Bun version `>=1.2.17 <2.0.0`
+   - Bun `^1.2.17`
 
 3. Install dependencies:
 
@@ -37,7 +37,7 @@ In this assignment, you will build a simplified versioning system for a CMS.
 Implement/update these endpoints:
 
 1. `GET /v1/pages/:id?version=` - Add an optional `version` query parameter to retrieve a specific version of a page. If no version is specified, return the latest live version.
-2. `GET /v1/pages/publishable` - List draft pages that can be published `Array<{ from: Page; to: Page }>`
+2. `GET /v1/pages/publishable` – Returns an array of objects, each holding the live (`from`) and draft (`to`) versions of a page. Used to determine which pages are ready to publish. `Array<{ from: Page | null; to: Page }>`
 3. `POST /v1/publish?pageIds=<pageIds>` - Publish pages from draft to live
 4. `GET /v1/versions` - Retrieve version history
 
