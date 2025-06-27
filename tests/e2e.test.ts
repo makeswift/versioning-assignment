@@ -3,14 +3,16 @@ import { PageService } from "../src/page/page.service";
 import { createServer } from "../src/server";
 import { createDatabase } from "../src/database/database";
 import type { Page } from "../src/page/page.schema";
+import { PageController } from "../src/page/page.controller";
 
 const testDb = createDatabase(":memory:");
 const pageService = new PageService(testDb);
+const pageController = new PageController(pageService);
 let server: Bun.Server;
 const port = 3333;
 
 beforeAll(async () => {
-  server = createServer(pageService, port);
+  server = createServer(pageController, port);
 });
 
 afterAll(() => {

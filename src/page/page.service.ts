@@ -7,11 +7,7 @@ import {
 } from "./page.schema";
 
 export class PageService {
-  db: Database;
-
-  constructor(db: Database) {
-    this.db = db;
-  }
+  constructor(private db: Database) {}
 
   getOneOrNull({ id }: { id: string }): Page | null {
     const page = this.db
