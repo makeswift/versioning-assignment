@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "test": "bun test"
+    "test": "bun test tests/",
+    "test:integration": "bun test tests/integration/",
+    "test:e2e": "bun test tests/e2e/api.test.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"

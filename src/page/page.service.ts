@@ -20,9 +20,10 @@ export class PageService {
     const page = this.db
       .query(
         `INSERT INTO pages (id, content, path)
-         VALUES (?, ?, ?)`
+         VALUES (?, ?, ?)
+         RETURNING *`
       )
-      .run(id, content, path);
+      .get(id, content, path);
 
     return PageSchema.parse(page);
   }
