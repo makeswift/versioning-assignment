@@ -55,13 +55,6 @@ We expect to be able to run your submission, so please ensure your code is funct
 
 This assignment is purposefully open-ended. We will evaluate your submission holistically. The goal is to see how you approach complex problems, architect solutions, and communicate your design decisions.
 
-## Submission
-
-When you're ready to submit your assignment:
-
-1. Create a public repository on GitHub with your solution
-2. Send us the link to your GitHub repository
-
 ## Questions?
 
 If you have any questions about the assignment, please don't hesitate to reach out to us. Have fun!
