@@ -41,7 +41,7 @@ Implement/update these endpoints:
 3. `POST /v1/publish?pageIds=<pageIds>` - Publish pages from draft to live
 4. `GET /v1/versions` - Retrieve version history
 
-- Your versioning system should be **extensible** - consider how it would scale when we add new resource types (components, typographies, snippets, etc.).
+- Your versioning system should be extensible—all resources (pages, components, typographies, snippets, etc.) must be versioned in the same way, so the design scales smoothly as new resource types are added.
 - Add e2e tests for the new functionality.
 - Update the `NOTES.md` file with any notes, design decisions, testing plan, or trade-offs you made during the implementation. If you haven't finished the assignment, please explain what you would have done with more time.
 
