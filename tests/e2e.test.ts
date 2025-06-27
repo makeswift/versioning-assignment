@@ -18,11 +18,11 @@ afterAll(() => {
   testDb.close();
 });
 
-describe("POST /api/pages", () => {
+describe("POST /v1/pages", () => {
   it("should create a new page", async () => {
     const input = { content: "content", path: "/page" };
 
-    const response = await fetch(`${server.url}/api/pages`, {
+    const response = await fetch(`${server.url}/v1/pages`, {
       method: "POST",
       body: JSON.stringify(input),
     });
@@ -34,12 +34,12 @@ describe("POST /api/pages", () => {
   });
 });
 
-describe("GET /api/pages/:id", () => {
+describe("GET /v1/pages/:id", () => {
   it("should retrieve a page by ID", async () => {
     const input = { content: "content", path: "/page" };
     const createdPage = pageService.create(input);
 
-    const response = await fetch(`${server.url}/api/pages/${createdPage.id}`);
+    const response = await fetch(`${server.url}/v1/pages/${createdPage.id}`);
 
     expect(response.status).toBe(200);
     const page = (await response.json()) as Page;
@@ -50,8 +50,42 @@ describe("GET /api/pages/:id", () => {
   it("should return 404 for non-existent page", async () => {
     const fakeId = crypto.randomUUID();
 
-    const response = await fetch(`${server.url}/api/pages/${fakeId}`);
+    const response = await fetch(`${server.url}/v1/pages/${fakeId}`);
 
     expect(response.status).toBe(404);
+  });
+});
+
+describe("PATCH /v1/pages/:id", () => {
+  it("should update a page's content", async () => {
+    const input = { content: "original content", path: "/page" };
+    const createdPage = pageService.create(input);
+
+    const update = { content: "updated content" };
+    const response = await fetch(`${server.url}/v1/pages/${createdPage.id}`, {
+      method: "PATCH",
+      body: JSON.stringify(update),
+    });
+
+    expect(response.status).toBe(200);
+    const page = (await response.json()) as Page;
+    expect(page.content).toBe(update.content);
+    expect(page.path).toBe(input.path);
+  });
+
+  it("should update a page's path", async () => {
+    const input = { content: "content", path: "/original-path" };
+    const createdPage = pageService.create(input);
+
+    const update = { path: "/updated-path" };
+    const response = await fetch(`${server.url}/v1/pages/${createdPage.id}`, {
+      method: "PATCH",
+      body: JSON.stringify(update),
+    });
+
+    expect(response.status).toBe(200);
+    const page = (await response.json()) as Page;
+    expect(page.content).toBe(input.content);
+    expect(page.path).toBe(update.path);
   });
 });

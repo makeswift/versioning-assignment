@@ -1,5 +1,10 @@
 import { Database } from "bun:sqlite";
-import { PageSchema, type CreatePageInput, type Page } from "./page.schema";
+import {
+  PageSchema,
+  type CreatePageInput,
+  type UpdatePageInput,
+  type Page,
+} from "./page.schema";
 
 export class PageService {
   db: Database;
@@ -26,5 +31,20 @@ export class PageService {
       .get(id, content, path);
 
     return PageSchema.parse(page);
+  }
+
+  update(id: string, updates: UpdatePageInput): Page | null {
+    const page = this.db
+      .query(
+        `UPDATE pages
+         SET
+           content = COALESCE(?, content),
+           path = COALESCE(?, path)
+         WHERE id = ?
+         RETURNING *`
+      )
+      .get(updates.content ?? null, updates.path ?? null, id);
+
+    return PageSchema.nullable().parse(page);
   }
 }
