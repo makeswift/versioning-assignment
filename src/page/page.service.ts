@@ -14,7 +14,12 @@ export class PageService {
   }
 
   getOneOrNull({ id }: { id: string }): Page | null {
-    const page = this.db.query("SELECT * FROM pages WHERE id = ?").get(id);
+    const page = this.db
+      .query(
+        `SELECT * FROM pages 
+         WHERE id = $id`
+      )
+      .get({ $id: id });
 
     return PageSchema.nullable().parse(page);
   }
@@ -25,10 +30,10 @@ export class PageService {
     const page = this.db
       .query(
         `INSERT INTO pages (id, content, path)
-         VALUES (?, ?, ?)
+         VALUES ($id, $content, $path)
          RETURNING *`
       )
-      .get(id, content, path);
+      .get({ $id: id, $content: content, $path: path });
 
     return PageSchema.parse(page);
   }
@@ -38,12 +43,16 @@ export class PageService {
       .query(
         `UPDATE pages
          SET
-           content = COALESCE(?, content),
-           path = COALESCE(?, path)
-         WHERE id = ?
+           content = COALESCE($content, content),
+           path = COALESCE($path, path)
+         WHERE id = $id
          RETURNING *`
       )
-      .get(updates.content ?? null, updates.path ?? null, id);
+      .get({
+        $id: id,
+        $content: updates.content ?? null,
+        $path: updates.path ?? null,
+      });
 
     return PageSchema.nullable().parse(page);
   }
