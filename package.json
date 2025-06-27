@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "bun run --watch src/index.ts",
     "test": "bun test",
+    "drop:db": "rm app.db",
     "test:watch": "bun test --watch"
   },
   "devDependencies": {
