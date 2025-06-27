@@ -27,7 +27,7 @@ In this assignment, you will build a simplified versioning system for a CMS.
   - Any frameworks/libraries you prefer
   - Include test coverage
 - Your versioning system should be **extensible** - consider how it would scale when we add new resource types (components, themes, snippets, etc.).
-- Create a `README.md` file with instructions on how to run the application and tests, notes, design decisions, and trade-offs you made during the implementation. If you haven't finished the assignment, please explain what you would have done with more time.
+- Update the `NOTES.md` file with any notes, design decisions, and trade-offs you made during the implementation. If you haven't finished the assignment, please explain what you would have done with more time.
 
 ## Timeframe and Evaluation Criteria
 
