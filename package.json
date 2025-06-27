@@ -6,6 +6,10 @@
   "engines": {
     "bun": ">=1.2.17"
   },
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "test": "bun test"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
