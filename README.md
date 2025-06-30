@@ -38,7 +38,7 @@ Let's get you up and running!
 
 Your task is to build a simplified versioning system for a CMS - think of it as the backbone that keeps track of all content changes!
 
-Here's how it works: All pages start as a draft version. Changes made to the draft are visible only in the builder and don’t appear on the live page. When users publish their changes, the page moves from draft to live. Users can then edit the page again and publish it as many times as they like; each publication creates a new version.
+Here’s how it works: Every page starts in a draft version. Changes made in draft are visible only in the builder and don’t appear on the live page. When users publish their changes, the page moves from draft to live. After that, they can edit the page again and publish it as many times as they like; each publication creates a new version.
 
 Please implement or update these endpoints:
 
