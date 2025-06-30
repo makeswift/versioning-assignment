@@ -2,59 +2,64 @@
 
 ## Overview
 
-Makeswift is a visual page builder that allows users to create and edit websites without writing code. Makeswift automatically tracks every change you make to a page. All pages start as draft versions; users can publish them to make them live. Makeswift also allows users to roll back to previous page versions.
+Welcome! We're excited to have you work on this assignment.
 
-To get a sense of what Makeswift is, please check out [Makeswift](https://makeswift.com/).
+Makeswift is a visual page builder that empowers users to create and edit websites without writing code. At the heart of Makeswift is its versioning system, which tracks changes to pages and helps users manage different versions of their content seamlessly.
+
+Want to see what Makeswift is all about? Check out [Makeswift](https://makeswift.com/) to get a feel for the platform!
 
 ## Getting Started
 
-1. Clone the repository (do not fork):
+Let's get you up and running!
+
+1. First, clone the repository:
 
    ```bash
    git clone <repository-url>
    cd versioning-assignment
    ```
 
-2. Prerequisites:
+2. You'll need:
 
    - Bun `^1.2.17`
 
-3. Install dependencies:
+3. Next, install the dependencies:
 
    ```bash
    bun install
    ```
 
-4. Start the tests:
+4. Finally, start the tests:
    ```bash
    bun test:watch
    ```
 
 ## Assignment
 
-In this assignment, you will build a simplified versioning system for a CMS.
+Your task is to build a simplified versioning system for a CMS - think of it as the backbone that keeps track of all content changes!
 
-Implement/update these endpoints:
+Here's how it works: All pages start as a draft version. Changes made to the draft are visible only in the builder and don’t appear on the live page. When users publish their changes, the page moves from draft to live. Users can then edit the page again and publish it as many times as they like; each publication creates a new version.
+
+Please implement or update these endpoints:
 
 1. `GET /v1/pages/:id?version=` - Add an optional `version` query parameter to retrieve a specific version of a page. If no version is specified, return the latest live version.
 2. `GET /v1/pages/publishable` – Returns an array of objects, each holding the live (`from`) and draft (`to`) versions of a page. Used to determine which pages are ready to publish. `Array<{ from: Page | null; to: Page }>`
 3. `POST /v1/publish?pageIds=<pageIds>` - Publish pages from draft to live
 4. `GET /v1/versions` - Retrieve version history
 
-- Your versioning system should be extensible—all resources (pages, components, typographies, snippets, etc.) must be versioned in the same way, so the design scales smoothly as new resource types are added.
-- Add e2e tests for the new functionality.
-- Update the `NOTES.md` file with any notes, design decisions, testing plan, or trade-offs you made during the implementation. If you haven't finished the assignment, please explain what you would have done with more time.
+- **Think big picture!** Your versioning system should be extensible - all resources (pages, components, typographies, snippets, etc.) should be versioned in the same way. This ensures your design scales as new resource types are added.
+- Please add e2e tests for the new functionality.
+- Feel free to use any library that can help you implement the features - we're all about efficiency!
+- Share your journey! Update the `NOTES.md` file with any notes, design decisions, how you used LLMs, trade-offs you made during the implementation, or what you'd tackle next with more time.
 
-## Timeframe and Evaluation Criteria
+## Timeframe and What We're Looking For
 
-We expect this assignment to take about 3-4 hours. **The timeframe is intentionally tight** - we don't expect candidates to finish everything perfectly. Focus on demonstrating your approach to the core challenges and document what you would do with more time.
+We expect this assignment to take about 3-4 hours. **Here's the thing - the timeframe is intentionally tight!**. We don't expect you to finish everything perfectly. Instead, we want to see how you approach the core challenges and understand your thought process.
 
-You're encouraged to use any tools that help you be productive during the take-home assignment, including AI coding assistants like Claude Code. However, please note that in a follow-up interview, we will evaluate your ability to reason through and explain your solution without these tools, so make sure you understand your implementation thoroughly.
+Feel free to use any tools that help you be productive, including AI coding assistants like Claude Code. Just keep in mind that if selected for a follow-up interview, you'll need to discuss your solution and reasoning without these tools, so make sure you understand your implementation well.
 
-We expect to be able to run your submission, so please ensure your code is functional.
-
-This assignment is purposefully open-ended. We will evaluate your submission holistically. The goal is to see how you approach complex problems, architect solutions, and communicate your design decisions.
+This assignment is purposefully open-ended because we want to see your unique approach! We'll evaluate your submission holistically, focusing on how you tackle complex problems, architect solutions, and communicate your design decisions.
 
 ## Questions?
 
-If you have any questions about the assignment, please don't hesitate to reach out to us. Have fun!
+Got questions? Please don't hesitate to reach out. Most importantly - have fun with this!
