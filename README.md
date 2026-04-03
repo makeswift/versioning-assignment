@@ -40,6 +40,9 @@ Your task is to build a simplified versioning system for a CMS - think of it as 
 
 Here’s how it works: Every page starts in a draft version. Changes made in draft are visible only in the builder and don’t appear on the live page. When users publish their changes, the page moves from draft to live. After that, they can edit the page again and publish it as many times as they like; each publication creates a new version.
 
+> [!IMPORTANT]
+> You will have to change the database schema in order to complete this assignment.
+
 Please implement or update these endpoints:
 
 1. `GET /v1/pages/:id?version=` - Add an optional `version` query parameter to retrieve a specific version of a page. If no version is specified, return the latest live version.
