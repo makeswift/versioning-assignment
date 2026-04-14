@@ -47,7 +47,7 @@ Please implement or update these endpoints:
 3. `POST /v1/publish?pageIds=<pageIds>` - Publish pages from draft to live
 4. `GET /v1/versions` - Retrieve version history
 
-- **Think big picture!** Your versioning system should be extensible - all resources (pages, components, typographies, snippets, etc.) should be versioned via the same mechanism.
+- **Think big picture!** Your versioning system should be extensible - all resources (pages, components, typographies, snippets, etc.) should be versioned via the same strategy.
 - Please add e2e tests for the new functionality.
 - Feel free to use any library that can help you implement the features - we're all about efficiency!
 - All "page" fields should be versioned. Including `path`.
