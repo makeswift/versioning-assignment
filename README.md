@@ -46,7 +46,7 @@ Here’s how it works: Every page starts in a draft version. Changes made in dra
 Please implement or update these endpoints:
 
 1. `GET /v1/pages/:id?version=` - Add an optional `version` query parameter to retrieve a specific version of a page. If no version is specified, return the latest live version.
-2. `GET /v1/pages/publishable` – Returns an array of objects, each holding the live (`from`) and draft (`to`) versions of a page. Used to determine which pages are ready to publish. `Array<{ from: Page | null; to: Page }>`
+2. `GET /v1/pages/publishable` – Returns an array of objects, each holding the live (`from`) and draft (`to`) versions of a page. Used to determine which pages are ready to publish. Only pages that are different from live should be considered publishable. `Array<{ from: Page | null; to: Page }>`
 3. `POST /v1/publish?pageIds=<pageIds>` - Publish pages from draft to live
 4. `GET /v1/versions` - Retrieve version history
 
