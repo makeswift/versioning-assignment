@@ -38,14 +38,14 @@ Let's get you up and running!
 
 Your task is to build a simplified versioning system for a CMS - think of it as the backbone that keeps track of all content changes!
 
-Here’s how it works: Every page starts in a draft version. Changes made in draft are visible only in the builder and don’t appear on the live page. When users publish their changes, the page moves from draft to live. After that, they can edit the page again and publish it as many times as they like; each publication creates a new version.
+Here’s how it works: Every page starts in a draft version. Changes made in draft are visible only in the builder and don’t appear on the live page. When users publish their changes, a "live" version is produced. If they change the page and publish again, then the 2nd version is live, and the first is not.
 
 > [!IMPORTANT]
 > You will have to change the database schema in order to complete this assignment.
 
 Please implement or update these endpoints:
 
-1. `GET /v1/pages/:id?version=` - Add an optional `version` query parameter to retrieve a specific version of a page. If no version is specified, return the latest live version.
+1. `GET /v1/pages/:id?version=` - Add an optional `version` query parameter to retrieve a specific version of a page. If no version is specified, return the live version—each page should have only a single "live" version.
 2. `GET /v1/pages/publishable` – Returns an array of objects, each holding the live (`from`) and draft (`to`) versions of a page. Used to determine which pages are ready to publish. Only pages that are different from live should be considered publishable. `Array<{ from: Page | null; to: Page }>`
 3. `POST /v1/publish?pageIds=<pageIds>` - Publish pages from draft to live
 4. `GET /v1/versions` - Retrieve version history
@@ -54,7 +54,7 @@ Please implement or update these endpoints:
 - Please add e2e tests for the new functionality.
 - Feel free to use any library that can help you implement the features - we're all about efficiency!
 - For `pages`, the main fields to version are `path` and `content`.
-- Share your journey! Update the `NOTES.md` file with any notes, design decisions, how you used LLMs including your prompting strategy, trade-offs you made during the implementation, or what you'd tackle next with more time.
+- Share your journey! Update the `NOTES.md` file with any notes, design decisions, how you used LLMs including your prompting strategy, trade-offs you made during the implementation, or what you'd tackle next with more time. Be thoughtful in your communication.
 
 ## Timeframe and What We're Looking For
 
